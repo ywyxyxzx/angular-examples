@@ -28,11 +28,13 @@ export class MissionControlComponent {
   constructor(private missionService: MissionService) {
     missionService.missionConfirmed$.subscribe(
       astronaut => {
+        debugger
         this.history.push(`${astronaut} confirmed the mission`);
       });
   }
 
   announce() {
+    debugger
     const mission = this.missions[this.nextMission++];
     this.missionService.announceMission(mission);
     this.history.push(`Mission "${mission}" announced`);

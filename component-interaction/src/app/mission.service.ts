@@ -14,10 +14,12 @@ export class MissionService {
 
   // Service message commands
   announceMission(mission: string) {
+    debugger
     this.missionAnnouncedSource.next(mission);
   }
 
   confirmMission(astronaut: string) {
+    debugger
     this.missionConfirmedSource.next(astronaut);
   }
 }
