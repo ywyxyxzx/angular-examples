@@ -1,10 +1,10 @@
-import { Component, Directive, Input, TemplateRef, ContentChild, HostBinding, HostListener } from '@angular/core';
+import { Component, Directive, Input, TemplateRef, ContentChild, HostBinding, HostListener, AfterContentInit, AfterContentChecked } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent {}
+export class AppComponent{}
 
 @Directive({
   selector: 'button[appExampleZippyToggle]',
@@ -31,8 +31,17 @@ let nextId = 0;
   selector: 'app-example-zippy',
   templateUrl: 'example-zippy.template.html',
 })
-export class ZippyComponent {
+export class ZippyComponent  implements AfterContentInit, AfterContentChecked{
   contentId = `zippy-${nextId++}`;
   @Input() expanded = false;
   @ContentChild(ZippyContentDirective) content!: ZippyContentDirective;
+
+  ngAfterContentInit(): void {
+      console.log('ngAfterContentInit');
+  }
+
+  ngAfterContentChecked() {
+    console.log('ngAfterContentChecked');
+  }
+
 }
